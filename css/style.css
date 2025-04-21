@@ -791,19 +791,31 @@ a:focus {
 
 @media (max-width: 1024px) {
   .highlight-section {
-    gap: 40px; /* Giảm khoảng cách để không quá rộng */
+    flex-direction: column; /* Xếp dọc thay vì hàng ngang */
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+    padding: 40px 40px;
   }
 
   .highlights {
-    max-width: 60%; /* Nội dung rộng hơn */
+    max-width: 90%;
+    text-align: left; /* Giữ text dễ đọc */
+  }
+
+  .highlights h2 {
+    font-size: 26px;
+    text-align: center;
   }
 
   .highlight-video {
-    max-width: 35%; /* Giữ video nhỏ hơn */
+    max-width: 90%;
   }
 
   video {
-    max-height: 240px; /* Làm video ngắn hơn */
+    width: 100%;
+    max-height: 240px;
+    border-radius: 10px;
   }
 
   .products {
@@ -847,7 +859,7 @@ a:focus {
   }
 
   h1, h2, h3 {
-    font-size: 22px; /* Chữ to hơn một chút */
+    font-size: 25px; /* Chữ to hơn một chút */
     text-align: center;
   }
 
@@ -857,16 +869,39 @@ a:focus {
   }
 
   .products {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 15px !important;
   }
 
   .product {
-    max-width: 90%;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-bottom: 30px !important;
+    text-align: center !important;
   }
 
   .products img {
-    max-width: 400px;
+    width: 90% !important;         /* Tăng kích thước ảnh */
+    max-width: 350px !important;   /* Giới hạn tối đa ảnh */
+    height: auto !important;
+    border-radius: 16px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .product h3,
+  .product .price {
+    font-size: 20px !important;
+  }
+
+  .product .price del {
+    font-size: 16px !important;
+    color: #888 !important;
+  }
+
+  .product .price strong {
+    font-size: 22px !important;
+    color: #000 !important;
   }
 
 
@@ -876,19 +911,37 @@ a:focus {
   }
 
   .register {
-    max-width: 90%;
-  }
+    max-width: 600px;
+    margin: 0 auto;              /* Căn giữa theo chiều ngang */
+    padding: 20px;
+    background-color: #fffaf3;   /* Màu nền nhẹ */
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 
-  .register table,
-  .register td {
-    display: block;
+
+
+  .register table {
     width: 100%;
-  }
+}
 
-  .register td.gender-field {
-    justify-content: center; /* Căn giữa khi trên mobile */
-    gap: 15px; /* Giảm khoảng cách để không bị thưa quá */
-  }
+/* Căn label bên trái và input bên phải rõ ràng hơn */
+.register td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+.accept-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.gender-field {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Khoảng cách giữa các lựa chọn */
+}
 
 
   .register label {
@@ -912,18 +965,57 @@ a:focus {
   }
 
   .highlight-section {
-    flex-direction: column; /* Xếp dọc */
-    align-items: center;
+    padding: 0 !important;
+    margin: 0 auto;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .highlights {
+    padding: 0 10px !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    box-sizing: border-box;
+    text-align: justify;
+  }
+
+  .highlights h2 {
     text-align: center;
+    margin: 16px 0;
   }
 
-  .highlights,
+  .highlights ul {
+    padding-left: 20px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
   .highlight-video {
-    max-width: 90%; /* Hai phần cân đối */
-  }
+  width: 100%;        /* Chiếm toàn bộ chiều rộng container */
+  max-width: 100%;    /* Không vượt quá container */
+  margin: 20px 0;     /* Khoảng cách trên dưới */
+}
 
-  video {
-    max-height: 220px;
+.highlight-video video {
+  width: 100%;        /* Video chiếm hết phần div chứa */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  object-fit: cover;
+}
+
+  .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    font-size: 16px;
+    border-radius: 30px;
+    background-color: #a76533;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
   .payment-icons {
@@ -935,6 +1027,13 @@ a:focus {
     max-width: 60px; /* Thu nhỏ biểu tượng để phù hợp với màn hình nhỏ */
   }
 
+  iframe.map {
+        height: 250px; /* Thu nhỏ chiều cao bản đồ */
+  }
+
+  .accordion-body {
+    font-size: 15px;
+  }
 
 }
 
@@ -1535,27 +1634,43 @@ footer img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 50px; /* Tạo khoảng cách rộng hơn */
-  padding: 20px;
+  gap: 60px;
+  padding: 60px 80px;
 }
 
 .highlights {
   flex: 1;
-  max-width: 55%;
+  max-width: 50%;
+}
+
+.highlights h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.highlights ul {
+  font-size: 18px;
+  line-height: 1.6;
+  padding-left: 20px;
 }
 
 .highlight-video {
   flex: 1;
-  max-width: 40%;
+  max-width: 45%;
 }
 
-/* Điều chỉnh video */
 video {
   width: 100%;
-  max-height: 280px; /* Giới hạn chiều cao */
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
+
+video:hover {
+  transform: scale(1.01);
+}
+
 
 /* Hiển thị modal */
 .modal {
@@ -1589,4 +1704,18 @@ video {
     cursor: pointer;
     border: none;
 }
+
+
+#faq ul {
+  padding-left: 1.5rem; /* giúp đồng đều */
+  list-style-position: inside; /* đưa dấu chấm sát với chữ */
+  line-height: 1.8; /* giãn dòng vừa phải cho đẹp */
+  margin-bottom: 1rem;
+}
+
+#faq li::marker {
+  color: #5a4a42; /* chỉnh màu dấu chấm */
+  font-size: 1.1rem;
+}
+
 
